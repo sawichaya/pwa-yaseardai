@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YaSearDai</title>
+    <!-- boot strap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    <!-- Connecting to firebase -->
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-firestore.js"></script>
+    
+    <!-- css -->
+    <link rel="stylesheet" href="suayngam.css">
+
+</head>
+<body>
+    <mobile>
+      <!-- <div class="mobile-status-bar">
+        <img src="https://i.imgur.com/XSqz2K4.png" alt="">
+      </div> -->
+      <div class='mobile-container'>
+        <nav style="font-size: 2rem;">YaSearDai</nav>
+        <div id="page-default" class="page">
+            <div style="display: inline-flex;">
+                <h3 style="color: #42ADB3;">My item list</h3>
+                <button onclick="myalert()" style="width: 40px; height: 40px; margin-left: 120px; margin-top: 15px;" class="btn"><i class="fa fa-bell"></i></button>
+                <button link href="edit.html" style="width: 60px; margin-left: 10px; height: 40px; margin-top: 15px;" class="btn-warning">แก้ไข</button>
+              </div>
+              <form style="background-color:;">
+                <div class="form-group">
+                  <div class="dropdown" id="dropdown">
+                    <!-- <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      กรุณาเลือกสิ่งของที่ต้องการ
+                    </button> -->
+                    <select id="">
+                      <option value="" id="01">โยเกิร์ต</option>
+                      <option value="" id="02">ขนมปัง</option>
+                      <option value="" id="03">นมสด</option>
+                      <option value="" id="04">ไข่ไก่</option>
+                      <option value="" id="05">เนื้อหมู</option>
+                      <option value="" id="06">เนื้อวัว</option>
+                      <option value="" id="07">เนื้อไก่</option>
+                      <option value="" id="08">อาหารทะเล</option>
+                      <option value="" id="09">ผักสด</option>
+                    </div>
+                  </div>
+                </div>
+                <!-- <button onclick="addItem()" style="width: 100px; margin-left: 150px;">ADD</button> -->
+                
+            </form>
+            <!-- <div type="button" class="btn listbox">
+                <b>โยเกิร์ต</b><br>
+                <b>หมดอายุ:</b>27/03/2563
+            </div>
+            <div type="button" class="btn listbox">
+                <b>โยเกิร์ต</b><br>
+                <b>หมดอายุ:</b>27/03/2563
+            </button> -->
+            <form>
+            <div class="form-group">
+            </div>
+            <div class="form-group">
+            </div>
+        </div>
+        
+      </div>
+    </mobile>
+
+
+
+<!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+<script src="https://www.gstatic.com/firebasejs/7.14.0/firebase-analytics.js"></script>
+
+<script>
+  // Your web app's Firebase configuration
+  var firebaseConfig = {
+    apiKey: "AIzaSyAF9fe_XQq9cQ4-pDhSaVyCh5JC2lqVpSA",
+    authDomain: "yaseardai.firebaseapp.com",
+    databaseURL: "https://yaseardai.firebaseio.com",
+    projectId: "yaseardai",
+    storageBucket: "yaseardai.appspot.com",
+    messagingSenderId: "173338433997",
+    appId: "1:173338433997:web:6e3a7aacc1d7bede164c84",
+    measurementId: "G-NPK3D7GKXJ"
+  };
+  
+var db = firebase.firestore();
+
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  firebase.analytics();
+</script>
+<script>src="/main.js"</script>
+</body>
+</html>
+<script>
+showDropDownList()
+function showDropDownList(){
+  let content = '<select id="menuList">'
+  db.collection("category").doc("kitchen").get().then(function (doc) {
+        menuMap = doc.data().list
+        for (var property in menuMap) {
+          text = '<option value="' + property + '" id="' +property+'">โยเกิร์ต'+ property + '</option>'
+            console.log(property);
+            content = content.concat(text)
+            count++
+            if (count == getMapSize(menuMap)) {
+                content = content.concat('</select>')
+    document.getElementById("dropdown").innerHTML = content
+            }
+        }
+    });
+}
+function addItem() {
+  let seclect = document.getElementById("01").value
+  var btn = document.createElement("p");
+  document.body.appendChild(btn);
+}
+
+function myalert() { 
+  alert("อย่าลืมนะ!! อีก 3 วัน โยเกิร์ตของคุณจะหมดอายุ");
+}
+function getMapSize(x) {
+    var len = 0;
+    for (var count in x) {
+        len++;
+    }
+
+    return len;
+}
+</script>
